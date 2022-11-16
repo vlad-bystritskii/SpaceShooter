@@ -32,13 +32,14 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         _spawManger = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        
 
         if (_spawManger == null)
         {
             Debug.LogError("SpawnManager is NULL");
         }
         if (_uiManager == null)
-                {
+        {
             Debug.LogError("UIManager is NULL");
         }
     }
@@ -108,9 +109,11 @@ public class Player : MonoBehaviour
         }
 
         _lives--;
+        _uiManager.UpdateLives(_lives);
         if(_lives < 1)
         {
             _spawManger.OnPlayerDeath();
+            _uiManager.ShowGameOverScreen();
             Destroy(this.gameObject);
         }
     }
