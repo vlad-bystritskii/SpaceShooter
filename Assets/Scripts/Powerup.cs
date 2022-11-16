@@ -34,20 +34,18 @@ public class Powerup : MonoBehaviour
                 {
                     case PowerupType.TripleShot:
                     player.ActivateTripleShotPowerup();
-                    Destroy(this.gameObject);
-                    return;
+                    break;
             
                     case PowerupType.Speed:
-                    player.ActivateSpeedPowerup();    
-                    Destroy(this.gameObject); 
-                    return;
+                    player.ActivateSpeedPowerup();
+                    break;
 
                     case PowerupType.Shield:
                     player.ActivateShieldPowerup();
-                    Destroy(this.gameObject);
-                    return;
+                    break;
                 }   
             }
+            Destroy(this.gameObject);
         } 
     }
     
