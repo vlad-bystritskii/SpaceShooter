@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     private GameObject _tripleShootPrefab;
     [SerializeField]
     private GameObject _shieldObject;
-
     [SerializeField]
     private float _speed = 3.5f;
     private float _laserOffset = 0.958f;
@@ -23,16 +22,24 @@ public class Player : MonoBehaviour
     private bool _isSpeedPowerupEnabled = false;
     private bool _isShieldEnabled = false;
     private SpawnManager _spawManger;
+    private UIManager _uiManager;
+    [SerializeField]
+    private int _score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
         _spawManger = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         if (_spawManger == null)
         {
             Debug.LogError("SpawnManager is NULL");
+        }
+        if (_uiManager == null)
+                {
+            Debug.LogError("UIManager is NULL");
         }
     }
 
@@ -120,8 +127,15 @@ public class Player : MonoBehaviour
         StartCoroutine(StartSpeedPowerupTimer());
     }
 
-    public void ActivateShieldPowerup() {
+    public void ActivateShieldPowerup() 
+    {
         _isShieldEnabled = true;
         _shieldObject.SetActive(true);
+    }
+
+    public void IncrementScore(int points)
+    {
+        _score += points;
+        _uiManager.UpdateScoreText(_score);
     }
 }
