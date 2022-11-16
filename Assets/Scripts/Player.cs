@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     private int _lives = 3;
     [SerializeField]
     private bool _isTripleShotEnabled = false;
-    private float _powerupWorkDelay = 5f;
+    [SerializeField]
+    private bool _isSpeedPowerupEnabled = false;
     private SpawnManager _spawManger;
 
     // Start is called before the first frame update
@@ -47,8 +48,9 @@ public class Player : MonoBehaviour
 
     void CalculateMovement()
     {
+        float speed = _speed * (_isSpeedPowerupEnabled ? 2 : 1);
         Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        transform.Translate(direction * _speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
 
@@ -75,10 +77,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator StartPowerupTimer()
+    IEnumerator StartTripleShootPowerupTimer()
     {
-        yield return new WaitForSeconds(_powerupWorkDelay);
+        yield return new WaitForSeconds(5.0f);
         _isTripleShotEnabled = false;
+    }
+
+    IEnumerator StartSpeedPowerupTimer()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isSpeedPowerupEnabled = false;
     }
 
     public void Damage() 
@@ -94,6 +102,16 @@ public class Player : MonoBehaviour
     public void ActivateTripleShotPowerup()
     {
         _isTripleShotEnabled = true;
-        StartCoroutine(StartPowerupTimer());
+        StartCoroutine(StartTripleShootPowerupTimer());
+    }
+
+    public void ActivateSpeedPowerup() 
+    {
+        _isSpeedPowerupEnabled = true;
+        StartCoroutine(StartSpeedPowerupTimer());
+    }
+
+    public void ActivateShieldPowerup() {
+        // TODO: - Add shiled loggic
     }
 }
