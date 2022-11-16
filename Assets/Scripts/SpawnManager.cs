@@ -11,8 +11,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float _enemySpawnDelay = 5.0f;
     [SerializeField]
-    private float _tripleShotSpanwDelay = 15.0f;
-    [SerializeField]
     private GameObject _tripleShotPowerup; 
 
     private bool _stopSpawning = false;
@@ -21,11 +19,6 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnTripleeShotRoutine());
-    }
-
-    void Update()
-    {
-
     }
 
     IEnumerator SpawnEnemyRoutine()
@@ -41,11 +34,12 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnTripleeShotRoutine()
     {
+        yield return new WaitForSeconds(Random.Range(3, 7));    
         while (_stopSpawning == false)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 6.5f, 0);
             GameObject powerup = Instantiate(_tripleShotPowerup, posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(_tripleShotSpanwDelay);
+            yield return new WaitForSeconds(Random.Range(3, 7));
         }
     }
 

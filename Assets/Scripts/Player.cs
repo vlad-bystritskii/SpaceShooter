@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     private int _lives = 3;
     [SerializeField]
     private bool _isTripleShotEnabled = false;
-    private bool _stopPowerup = true;
     private float _powerupWorkDelay = 5f;
     private SpawnManager _spawManger;
 

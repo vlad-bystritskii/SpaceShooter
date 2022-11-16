@@ -7,13 +7,7 @@ public class TripleShotPowerup : MonoBehaviour
     [SerializeField]
     private float _speed = 3f;
     private float _endYPosition = -7f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         CalculateMovement();
