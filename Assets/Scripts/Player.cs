@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _laserPrefab;
+    [SerializeField]
+    private GameObject _tripleShootPrefab;
 
     [SerializeField]
     private float _speed = 3.5f;
-    [SerializeField]
-    private GameObject _laserPrefab;
     private float _laserOffset = 0.958f;
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1f;
     [SerializeField]
     private int _lives = 3;
+    [SerializeField]
+    private bool _isTripleShotEnabled = false;
     private SpawnManager _spawManger;
 
     // Start is called before the first frame update
@@ -36,7 +40,7 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            ShootLaser();
+            FireLaser();
         }
     }
 
@@ -57,10 +61,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    void ShootLaser() 
+    void FireLaser() 
     {
-         _canFire = Time.time + _fireRate;
-        Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
+        _canFire = Time.time + _fireRate;
+        if (_isTripleShotEnabled)
+        {
+            Instantiate(_tripleShootPrefab, transform.position, Quaternion.identity);
+        }
+        else 
+        {
+            Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
+        }
     }
 
     public void Damage() 

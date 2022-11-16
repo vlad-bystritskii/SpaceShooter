@@ -279,10 +279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c8a37e722c7534da1b1e03db782ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
   _laserPrefab: {fileID: 832379371301866813, guid: 2b377cb1e103e10419405f47f4b021d7, type: 3}
+  _tripleShootPrefab: {fileID: 3448577189037683423, guid: 14ec28d81f2c1de4faccf5099a39ca27, type: 3}
+  _speed: 5
   _fireRate: 0.5
   _lives: 3
+  _isTripleShotEnabled: 0
 --- !u!212 &1093831565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -360,7 +362,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00000023841858, y: 0}
