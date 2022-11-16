@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     private int _lives = 3;
     [SerializeField]
     private bool _isTripleShotEnabled = false;
+    private bool _stopPowerup = true;
+    private float _powerupWorkDelay = 5f;
     private SpawnManager _spawManger;
 
     // Start is called before the first frame update
@@ -74,6 +76,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator StartPowerupTimer()
+    {
+        yield return new WaitForSeconds(_powerupWorkDelay);
+        _isTripleShotEnabled = false;
+    }
+
     public void Damage() 
     {
         _lives--;
@@ -82,5 +90,11 @@ public class Player : MonoBehaviour
             _spawManger.OnPlayerDeath();
             Destroy(this.gameObject);
         }
+    }
+
+    public void ActivateTripleShotPowerup()
+    {
+        _isTripleShotEnabled = true;
+        StartCoroutine(StartPowerupTimer());
     }
 }

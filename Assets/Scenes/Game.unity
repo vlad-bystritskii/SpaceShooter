@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _laserPrefab: {fileID: 832379371301866813, guid: 2b377cb1e103e10419405f47f4b021d7, type: 3}
-  _tripleShootPrefab: {fileID: 3448577189037683423, guid: 14ec28d81f2c1de4faccf5099a39ca27, type: 3}
+  _tripleShootPrefab: {fileID: 872680795854161602, guid: 14ec28d81f2c1de4faccf5099a39ca27, type: 3}
   _speed: 5
   _fireRate: 0.5
   _lives: 3
@@ -493,7 +493,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 5297816986538142724, guid: c49c95a8198037045ad8d9a8e27705e7, type: 3}
   _enemyContainer: {fileID: 593113037}
-  _spawnDelay: 5
+  _enemySpawnDelay: 5
+  _tripleShotSpanwDelay: 15
+  _tripleShotPowerup: {fileID: 9083387206499665759, guid: b29b0184137f45d419a469a68275e72b, type: 3}
 --- !u!4 &1412434498
 Transform:
   m_ObjectHideFlags: 0
@@ -521,7 +523,7 @@ GameObject:
   - component: {fileID: 2116997051}
   - component: {fileID: 2116997050}
   m_Layer: 0
-  m_Name: Bacground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
