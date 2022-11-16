@@ -3,7 +3,10 @@ guid: d5c8a37e722c7534da1b1e03db782ac3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _laserPrefab: {instanceID: 0}
+  - _tripleShootPrefab: {instanceID: 0}
+  - _shieldPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
