@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Asteroid : MonoBehaviour
 {
-    private float _startYPosition = 6f;
-    private float _endYPosition = -6f;
-    private float _xBounds = 8f;
     [SerializeField]
-    private float _speed = 4.0f;
+    private float _speed = 3f;
+    [SerializeField]
+    private float _rotateSpeed = 19f;
+    private float _startYPosition = 7.5f;
+    private float _endYPosition = -7.5f;
+    private float _xBounds = 8f;
     private Player _player;
     private Animator _animator;
-
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
@@ -39,24 +40,27 @@ public class Enemy : MonoBehaviour
             Player player = other.transform.GetComponent<Player>();
             if (player != null) player.Damage();
 
-            _animator.SetTrigger("OnEnemyDead");
-            _speed = 0f;
-            Destroy(this.gameObject, 2.8f);
+            _animator.SetTrigger("OnAsteroidDead");
+            _speed = 0;
+            _rotateSpeed = 0;
+            Destroy(this.gameObject, 2.633f);
         } 
         else if (other.tag == "Laser")
         {
             if (_player != null) _player.IncrementScore(Random.Range(1,15));
 
+            _animator.SetTrigger("OnAsteroidDead");
             Destroy(other.gameObject);
-            _animator.SetTrigger("OnEnemyDead");
-            _speed = 0f;
-            Destroy(this.gameObject, 2.8f);
+            _speed = 0;
+            _rotateSpeed = 0;
+            Destroy(this.gameObject, 2.633f);
         }
     }
 
     void CalculateMovement() 
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        transform.Rotate(Vector3.forward * _rotateSpeed * Time.deltaTime);
 
         if (transform.position.y <= _endYPosition)
         {

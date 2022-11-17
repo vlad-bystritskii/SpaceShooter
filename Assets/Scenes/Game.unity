@@ -955,6 +955,9 @@ MonoBehaviour:
   - {fileID: 9083387206499665759, guid: b29b0184137f45d419a469a68275e72b, type: 3}
   - {fileID: 616812569841050929, guid: ae1090fb891a0784c9d51885a1c8e5cb, type: 3}
   - {fileID: 5377188475242034010, guid: 68a74fe4bc8bbe64e9628c3ffd2b4064, type: 3}
+  enemys:
+  - {fileID: 5297816986538142724, guid: c49c95a8198037045ad8d9a8e27705e7, type: 3}
+  - {fileID: 9150080893150228496, guid: e0be7fa4dd12e194291a84d70aacfa10, type: 3}
 --- !u!4 &1412434498
 Transform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,8 @@ public class SpawnManager : MonoBehaviour
     private float _enemySpawnDelay = 5.0f;
     [SerializeField]
     private GameObject[] powerups; 
-
+    [SerializeField]
+    private GameObject[] enemys;
     private bool _stopSpawning = false;
 
     void Start()
@@ -26,7 +27,8 @@ public class SpawnManager : MonoBehaviour
         while (_stopSpawning == false)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
-            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            int randomEnemy = Random.Range(0, enemys.Length);
+            GameObject newEnemy = Instantiate(enemys[randomEnemy], posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(_enemySpawnDelay);
         }
