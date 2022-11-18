@@ -954,6 +954,7 @@ MonoBehaviour:
   _leftEngine: {fileID: 613060219}
   _rightEngine: {fileID: 519222062}
   _laserSound: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
+  _deadSound: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
 --- !u!212 &1093831565
 SpriteRenderer:
   m_ObjectHideFlags: 0
