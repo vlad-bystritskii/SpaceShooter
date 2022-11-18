@@ -16,6 +16,8 @@ public class Powerup : MonoBehaviour
     private float _endYPosition = -7f;
     [SerializeField]
     private PowerupType _type;
+    [SerializeField]
+    private AudioClip _audioClip;
 
     void Update()
     {
@@ -26,6 +28,7 @@ public class Powerup : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioSource.PlayClipAtPoint(_audioClip, transform.position);
             Player player = other.transform.GetComponent<Player>();
 
             if (player != null)
