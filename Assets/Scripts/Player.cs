@@ -23,8 +23,9 @@ public class Player : MonoBehaviour
     private bool _isShieldEnabled = false;
     private SpawnManager _spawManger;
     private UIManager _uiManager;
-    [SerializeField]
     private int _score = 0;
+    [SerializeField]
+    private GameObject _leftEngine, _rightEngine;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +110,16 @@ public class Player : MonoBehaviour
         }
 
         _lives--;
+
+        if (_lives == 2)
+        {
+            _rightEngine.SetActive(true);
+        }
+        else if (_lives == 1)
+        {
+            _leftEngine.SetActive(true);
+        }
+
         _uiManager.UpdateLives(_lives);
         if(_lives < 1)
         {
