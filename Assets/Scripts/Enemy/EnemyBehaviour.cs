@@ -9,13 +9,15 @@ public class EnemyBehaviour : MonoBehaviour
     private float _xBounds = 8f;
     private float _startYPosition = 6f;
     public float speed = 4.0f;
-    private Player _player;
     public Animator animator;
+    private Player _player;
+    private AudioSource _audioSource;
 
     public void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
 
         if (_player == null)
         {
@@ -24,6 +26,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (animator == null)
         {
             Debug.LogError("Animator is NULL");
+        }
+        if (_audioSource == null)
+        {
+            Debug.LogError("AudioSource is NULL");
         }
     }
 
@@ -66,5 +72,6 @@ public class EnemyBehaviour : MonoBehaviour
     virtual public void Deactivate()
     {
         speed = 0;
+        _audioSource.Play();
     }
 }

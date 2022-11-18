@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField]
     private AudioClip _laserSound;
+    [SerializeField]
+    private AudioClip _deadSound;
 
     // Start is called before the first frame update
     void Start()
@@ -49,10 +51,6 @@ public class Player : MonoBehaviour
         if (_audioSource == null)
         {
             Debug.LogError("AudioSource is NULL");
-        }
-        else
-        {
-            _audioSource.clip = _laserSound;
         }
     }
 
@@ -97,7 +95,7 @@ public class Player : MonoBehaviour
             Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
         }
 
-        _audioSource.Play();
+        _audioSource.PlayOneShot(_laserSound, 1f);
     }
 
     IEnumerator StartTripleShootPowerupTimer()
@@ -138,6 +136,7 @@ public class Player : MonoBehaviour
         {
             _spawManger.OnPlayerDeath();
             _uiManager.ShowGameOverScreen();
+            _audioSource.PlayOneShot(_deadSound, 1f);
             Destroy(this.gameObject);
         }
     }
