@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2977365137931499281}
   - component: {fileID: 5648960291725396574}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Glider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
